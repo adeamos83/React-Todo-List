@@ -22,43 +22,48 @@ class App extends Component {
   render() {
     const {newTodo} = this.state;
     const todos = this.state.todos.map((t, index) => (
-      <li key={index}>
-        {t}
-      </li>
+      <div className="item" key={index} style={{paddingTop: "10px", paddingBottom: "10px", alignItems: "center", display: "flex"}}>
+        <div className="ui left floated compact segment">
+          <div className="ui fitted checkbox">
+            <input type="checkbox"/>
+            <label></label>
+          </div>
+        </div>
+        <h3 className="ui header content">{t}</h3>
+      </div>
     ));
     
     return (
       <div className="App">
-      <div className="ui raised card" style={{marginTop: "50px", width: "400px"}}>
-          <div className="content">
-            <div className="header center aligned">
-              <h2>Todo-List App</h2>
+      <div className="ui segment" style={{marginTop: "50px", width: "400px"}}>
+            <div>
+              <h2 className="ui center aligned header">Todo-List App</h2>
+              <h5 className="ui center aligned grey header">Simple React To-Do App</h5>
             </div>
-          </div>
-          <div className="content" style={{padding: "14px 0"}}>
-            <div className="center aligned" style={{paddingBottom: "50px", position: "relative", top: "40px"}}>
+            <div className="center aligned" style={{paddingTop: "50px"}}>
               <form className="ui form" onSubmit={this.handleSubmit}>
-                  <div className="field" style={{paddingRight: "10px", paddingLeft: "10px"}}>
-                    <input
-                      type="text"
-                      name="newTodo"
-                      value={newTodo}
-                      onChange={(e) => 
-                        this.setState({[e.target.name]: e.target.value})
-                      }
-                    />
+                  <div className="field">
+                    <div className="ui action input">
+                      <input
+                        type="text"
+                        name="newTodo"
+                        value={newTodo}
+                        
+                        onChange={(e) => 
+                          this.setState({[e.target.name]: e.target.value})
+                        }
+                      />
+                      <button type="submit" className="save-button ui circular icon teal button" style={{top: "25px"}}>
+                        <i className="add icon"></i>
+                      </button>
+                    </div>
                   </div>
-                    <button type="submit" className="save-button ui fluid bottom attached teal button" style={{top: "25px"}}>
-                      <i className="add icon"></i>Add todo
-                    </button>
+                    
                 </form>
               </div>
-            </div>
-        </div>
-        <div className="todo-content">
-          <ol>
-            {todos}
-          </ol>
+              <div className="ui divided list">
+                  {todos}
+              </div>
         </div>
       </div>
     );
