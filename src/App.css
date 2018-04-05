@@ -19,3 +19,8 @@
 .todo-content {
   width: 50%;
 }
+
+.todo-card {
+ width: 400px; 
+ height: 400px;
+}

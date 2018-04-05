@@ -29,21 +29,32 @@ class App extends Component {
     
     return (
       <div className="App">
-        <h2>Todo-List App</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="newTodo"
-            value={newTodo}
-            className="todo-input"
-            onChange={(e) => 
-              this.setState({[e.target.name]: e.target.value})
-            }
-          />
-          <button type="submit" className="save-button">
-          Submit
-          </button>
-        </form>
+      <div className="ui raised card" style={{marginTop: "50px", width: "400px"}}>
+          <div className="content">
+            <div className="header center aligned">
+              <h2>Todo-List App</h2>
+            </div>
+          </div>
+          <div className="content" style={{padding: "14px 0"}}>
+            <div className="center aligned" style={{paddingBottom: "50px", position: "relative", top: "40px"}}>
+              <form className="ui form" onSubmit={this.handleSubmit}>
+                  <div className="field" style={{paddingRight: "10px", paddingLeft: "10px"}}>
+                    <input
+                      type="text"
+                      name="newTodo"
+                      value={newTodo}
+                      onChange={(e) => 
+                        this.setState({[e.target.name]: e.target.value})
+                      }
+                    />
+                  </div>
+                    <button type="submit" className="save-button ui fluid bottom attached teal button" style={{top: "25px"}}>
+                      <i className="add icon"></i>Add todo
+                    </button>
+                </form>
+              </div>
+            </div>
+        </div>
         <div className="todo-content">
           <ol>
             {todos}
